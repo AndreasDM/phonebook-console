@@ -1,6 +1,7 @@
 package com.example;
 
 import java.io.BufferedReader;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.MalformedURLException;
@@ -34,8 +35,9 @@ class HtmlDownloader {
             for (String line; (line = reader.readLine()) != null;) {
                 htmlPage += line;
             }
-        }
-        catch (IOException e) {
+        } catch (FileNotFoundException e) {
+            System.out.println("No result...");
+        } catch (IOException e) {
             // TODO: handle exception
             e.printStackTrace();
         }
