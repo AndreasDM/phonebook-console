@@ -6,3 +6,6 @@
 
 # ignore .iml files
 *.iml
+
+# ignore result file
+result.txt
