@@ -9,19 +9,15 @@ public class Person {
         this.phone = phone;
     }
 
-    public String getName() {
+    String getName() {
         return name;
     }
 
-    public String getPhone() {
+    String getPhone() {
         return phone;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public void setPhone(String phone) {
+    void setPhone(String phone) {
         this.phone = phone;
     }
 }
