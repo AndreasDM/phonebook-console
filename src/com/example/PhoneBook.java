@@ -20,7 +20,7 @@ public class PhoneBook {
     }
 
     private void welcomeMessage() {
-        System.out.print("Search for person: ");
+        System.out.print("Do a search: ");
     }
 
     private void takeUserInput() {
