@@ -1,0 +1,8 @@
+# ignore intellij folder
+.idea
+
+# ignore class files
+*.class
+
+# ignore .iml files
+*.iml
