@@ -6,13 +6,13 @@ import java.io.InputStreamReader;
 import java.net.MalformedURLException;
 import java.net.URL;
 
-public class HtmlDownloader {
+class HtmlDownloader {
     private URL url;
     private String phoneBookSite;
     private String searchString;
     private String htmlPage;
 
-    public HtmlDownloader() {
+    HtmlDownloader() {
         this.url = null;
         this.phoneBookSite = "https://www.gulesider.no/person/resultat/";
         this.searchString = "";
@@ -26,7 +26,7 @@ public class HtmlDownloader {
      * @param searchString - the text used for searching the phone book.
      * @return raw html text
      */
-    public String get(String searchString) {
+    String get(String searchString) {
         this.searchString = formatSearchString(searchString);
         urlConcat(this.searchString);
 
@@ -49,7 +49,7 @@ public class HtmlDownloader {
      * @return formatted string
      */
     private String formatSearchString(String searchString) {
-        searchString.replaceAll("\\ ", "%20");
+        searchString = searchString.replaceAll("\\ ", "%20");
         return searchString;
     }
 
