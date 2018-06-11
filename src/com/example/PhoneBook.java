@@ -19,15 +19,6 @@ public class PhoneBook {
         userInput = "";
     }
 
-    public List<Person> getResult() {
-        // TODO
-        return null;
-    }
-
-    public void search() {
-        // TODO
-    }
-
     private void welcomeMessage() {
         System.out.print("Search for person: ");
     }
@@ -42,21 +33,20 @@ public class PhoneBook {
 
     public static void main(String[] args) {
         PhoneBook phoneBook = new PhoneBook();
-        // TODO: tell user what to do:
-        phoneBook.welcomeMessage();
 
-        // TODO: take users input
+        // Prompt user
+        phoneBook.welcomeMessage();
         phoneBook.takeUserInput();
 
-        // TODO: download htlm document
+        // get html page
         String input = phoneBook.getUserInput();
         String htmlDocument = phoneBook.htmlDownloader.get(input);
 
-        // TODO: extract data from html document
+        // filter out info from html document
         phoneBook.htmlExtractor.setHtmlDocument(htmlDocument);
         phoneBook.searchResult = phoneBook.htmlExtractor.run();
 
-        // TODO: display results
+        // print out details
         for (Person p : phoneBook.searchResult)
             System.out.println(p.getName() + " " + p.getPhone());
     }
