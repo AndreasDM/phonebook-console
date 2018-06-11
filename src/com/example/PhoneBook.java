@@ -46,8 +46,20 @@ public class PhoneBook {
         phoneBook.htmlExtractor.setHtmlDocument(htmlDocument);
         phoneBook.searchResult = phoneBook.htmlExtractor.run();
 
+        // find longest name
+        int longestName = 0;
+        for (Person p : phoneBook.searchResult) {
+            if (p.getName().length() > longestName)
+                longestName = p.getName().length();
+        }
+
+        // format width
+        String format = "%-" + longestName;
+
         // print out details
+        System.out.println();
+        System.out.printf(format + "s" + " %s\n", "Name", "Phone");
         for (Person p : phoneBook.searchResult)
-            System.out.println(p.getName() + " " + p.getPhone());
+            System.out.printf(format + "s" + " %s\n", p.getName(), p.getPhone());
     }
 }
