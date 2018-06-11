@@ -9,18 +9,18 @@ import java.util.regex.Pattern;
  * This class uses regex to extract desired data from
  * a HTML document and inserts it into a List<Person> object.
  */
-public class HtmlExtractor {
+class HtmlExtractor {
     private Pattern namePattern;
     private Pattern phonePattern;
     private Matcher matcher;
     private List<Person> result;
     private String htmlDocument;
 
-    public HtmlExtractor() {
+    HtmlExtractor() {
         this("");
     }
 
-    public HtmlExtractor(String htmlDocument) {
+    HtmlExtractor(String htmlDocument) {
         this.namePattern = Pattern.
                 compile("\">\\b([^Om\\ ][A-Za-zæøå]+\\ [A-Za-zæøå]+(\\ [A-Za-zæøå]+)?(\\ [A-Za-zæøå]+)?)\\b<\\/a>");
         this.phonePattern = Pattern.
@@ -29,7 +29,7 @@ public class HtmlExtractor {
         this.result = new ArrayList<>();
     }
 
-    public void setHtmlDocument(String htmlDocument) {
+    void setHtmlDocument(String htmlDocument) {
         this.htmlDocument = htmlDocument;
         this.matcher = namePattern.matcher(htmlDocument);
     }
@@ -39,13 +39,30 @@ public class HtmlExtractor {
      * and adds it to an array.
      */
     private void extractName() {
+        matcher = namePattern.matcher(this.htmlDocument);
         while (matcher.find()) {
             result.add(new Person(matcher.group(1), ""));
         }
     }
 
-    public List<Person> run() {
+    /**
+     * This method extracts phone numbers from the html
+     * document and adds it to the person object.
+     */
+    private void extractPhone() {
+        matcher = phonePattern.matcher(this.htmlDocument);
+        int count = 0;
+        while (matcher.find()) {
+            if (count < result.size()) {
+                result.get(count).setPhone(matcher.group(1));
+                ++count;
+            }
+        }
+    }
+
+    List<Person> run() {
         extractName();
+        extractPhone();
         return result;
     }
 }
