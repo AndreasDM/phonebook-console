@@ -56,6 +56,10 @@ public class PhoneBook {
         // format width
         String format = "%-" + longestName;
 
+        if (longestName == 0) {
+            System.exit(-1);
+        }
+
         // print out details
         System.out.println();
         System.out.printf(format + "s" + " %s\n", "Name", "Phone");
