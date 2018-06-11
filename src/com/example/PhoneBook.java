@@ -5,9 +5,9 @@ import java.util.List;
 import java.util.Scanner;
 
 public class PhoneBook {
-    public  List<Person> searchResult;
-    public  HtmlDownloader htmlDownloader;
-    public HtmlExtractor htmlExtractor;
+    private List<Person> searchResult;
+    private HtmlDownloader htmlDownloader;
+    private HtmlExtractor htmlExtractor;
     private Scanner scanner;
     private String userInput;
 
@@ -28,15 +28,15 @@ public class PhoneBook {
         // TODO
     }
 
-    public void welcomeMessage() {
+    private void welcomeMessage() {
         System.out.print("Search for person: ");
     }
 
-    public void takeUserInput() {
+    private void takeUserInput() {
         userInput = scanner.nextLine();
     }
 
-    public String getUserInput() {
+    private String getUserInput() {
         return userInput;
     }
 
@@ -58,6 +58,6 @@ public class PhoneBook {
 
         // TODO: display results
         for (Person p : phoneBook.searchResult)
-            System.out.println(p.getName());
+            System.out.println(p.getName() + " " + p.getPhone());
     }
 }
