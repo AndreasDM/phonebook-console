@@ -11,7 +11,7 @@ import java.util.regex.Pattern;
  */
 public class HtmlExtractor {
     private Pattern namePattern;
-    private Pattern phonePattern = null; // TODO do a regex pattern for all phone numbers
+    private Pattern phonePattern;
     private Matcher matcher;
     private List<Person> result;
     private String htmlDocument;
@@ -23,6 +23,8 @@ public class HtmlExtractor {
     public HtmlExtractor(String htmlDocument) {
         this.namePattern = Pattern.
                 compile("\">\\b([^Om\\ ][A-Za-zæøå]+\\ [A-Za-zæøå]+(\\ [A-Za-zæøå]+)?(\\ [A-Za-zæøå]+)?)\\b<\\/a>");
+        this.phonePattern = Pattern.
+                compile("\">([0-9]{3}\\ [0-9]{2}\\ [0-9]{3}|[0-9]{2}\\ [0-9]{2}\\ [0-9]{2}\\ [0-9]{2}\\ )<\\/span>");
         this.matcher = namePattern.matcher(htmlDocument);
         this.result = new ArrayList<>();
     }
