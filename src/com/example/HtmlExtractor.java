@@ -61,6 +61,10 @@ class HtmlExtractor {
         }
     }
 
+    /**
+     * extracts name and phone
+     * @return a list containing the extracted data.
+     */
     List<Person> run() {
         extractName();
         extractPhone();
