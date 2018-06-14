@@ -22,9 +22,9 @@ class HtmlExtractor {
 
     HtmlExtractor(String htmlDocument) {
         this.namePattern = Pattern.
-                compile("\">\\b([^Om\\ ][A-Za-zæøå\\-]+\\ [A-Za-zæøå\\-]+(\\ [A-Za-zæøå\\-]+)?(\\ [A-Za-zæøå\\-]+)?)\\b<\\/a>");
+                compile(">\\b([A-Zæøåüö][a-zæøåüö]+?[\\ -][A-Zæøåüö][a-zæøåüö]+([\\ -][A-Zæøåüö][a-zæøåüö]{1,})?([\\ -][A-Zæøåüö][a-zæøåüö]+)?\\b)<");
         this.phonePattern = Pattern.
-                compile("\">([0-9]{3}\\ [0-9]{2}\\ [0-9]{3}|[0-9]{2}\\ [0-9]{2}\\ [0-9]{2}\\ [0-9]{2}\\ )<\\/span>");
+                compile(">\\b([0-9 ]{10,})<\\/span>");
         this.matcher = namePattern.matcher(htmlDocument);
         this.result = new ArrayList<>();
     }
@@ -55,7 +55,8 @@ class HtmlExtractor {
         while (matcher.find()) {
             if (count < result.size()) {
                 result.get(count).setPhone(matcher.group(1));
-                ++count;
+
+                count++;
             }
         }
     }
