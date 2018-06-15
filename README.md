@@ -5,4 +5,4 @@ Small phonebook console app written in Java that utilizes regexes. <br>
 
 ## how to run
 
-Inside `src` folder -> `javac com.example.PhoneBook`
+Inside `src` folder -> `javac com/example/PhoneBook.java && java com.example.PhoneBook`
